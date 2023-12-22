@@ -2,7 +2,7 @@ import { Console } from "node:console";
 
 //TODO: Moved to ENV
 const url =
-  "https://europe-west1-swift-doodad-319113.cloudfunctions.net/find_path";
+  "https://europe-west1-swift-doodad-319113.cloudfunctions.net/find_path1";
 
 export interface PayloadData {
   maze: number[][][][];
