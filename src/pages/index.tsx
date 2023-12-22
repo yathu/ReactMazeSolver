@@ -105,8 +105,8 @@ export default function Home() {
 
   return (
     <div className={`bg-slate-300 w-full h-screen`}>
-      <div className="w-full flex flex-row p-4">
-        <form className="max-w-[300px]">
+      <div className="w-full flex flex-col md:flex-row p-4">
+        <form className="md:w-[300px]">
           <input
             className="appearance-none border w-full rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-black"
             id="dimension"
@@ -144,7 +144,12 @@ export default function Home() {
         </form>
 
         {/* to show API Response  in this block*/}
-        {/* <div className="w-max flex-1 bg-gray-600 ml-4"></div> */}
+        {mazePath && (
+          <div className="md:flex-1 mt-3 md:mt-0 bg-gray-100 md:ml-4 p-4 text-black rounded-sm">
+            Maze Path: <br />
+            {JSON.stringify(mazePath)}
+          </div>
+        )}
       </div>
 
       <Canvas>
