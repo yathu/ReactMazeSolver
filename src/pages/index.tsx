@@ -8,7 +8,7 @@ export interface MazePath {
 }
 
 export default function Home() {
-  const [matrixArray, setMatrixArray] = useState<number[][][][]>([]);
+  const [matrixArray, setMatrixArray] = useState<number[][][]>([]);
   const [dimension, setDimension] = useState<number>(0);
   const [start, setStart] = useState<string>("");
   const [end, setEnd] = useState<string>("");
@@ -21,10 +21,10 @@ export default function Home() {
   }, [dimension]);
 
   const genMatrix = () => {
-    let threeDArray: number[][][][] = [];
+    let threeDArray: number[][][] = [];
 
     for (let i = 0; i < dimension; i++) {
-      const xArray: number[][][] = [];
+      let xArray: number[][] = [];
 
       for (let j = 0; j < dimension; j++) {
         const yArray: number[][] = [];
@@ -32,7 +32,7 @@ export default function Home() {
         for (let k = 0; k < dimension; k++) {
           yArray.push([i, j, k]);
         }
-        xArray.push(yArray);
+        xArray = [...xArray, ...yArray];
       }
       threeDArray.push(xArray);
     }
@@ -64,14 +64,14 @@ export default function Home() {
     const endArry = end.split(",").map((item) => parseInt(item, 10));
 
     const isStartExists = matrixArray.some((item, index) => {
-      const check1 = item[index].find(
+      const check1 = item.find(
         (data) => JSON.stringify(data) === JSON.stringify(startArry)
       );
       return check1;
     });
 
     const isEndExists = matrixArray.some((item, index) => {
-      const check1 = item[index].find(
+      const check1 = item.find(
         (data) => JSON.stringify(data) === JSON.stringify(endArry)
       );
       return check1;

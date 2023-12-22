@@ -5,7 +5,7 @@ const url =
   "https://europe-west1-swift-doodad-319113.cloudfunctions.net/find_path1";
 
 export interface PayloadData {
-  maze: number[][][][];
+  maze: number[][][];
   start: number[];
   stop: number[];
 }
